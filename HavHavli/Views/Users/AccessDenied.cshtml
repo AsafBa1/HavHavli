@@ -1,0 +1,16 @@
+﻿@model havhavli.Models.User
+@{
+    ViewData["Title"] = "AccessDenied";
+}
+
+
+<h2 class="text-danger">גישה נדחתה</h2>
+
+<h3 class="text-danger">לא קיימות הרשאות מתאימות עבור משתמש זה</h3>
+
+<div><a asp-action="Logout">לחץ כאן </a> על מנת להתחבר למשתמש אחר</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">חזרה אל דף הבית</a>
+</div>
+

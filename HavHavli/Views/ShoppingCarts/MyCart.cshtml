@@ -1,0 +1,206 @@
+﻿@model havhavli.Models.ShoppingCart
+
+@{
+    ViewData["Title"] = "סל הקניות שלי";
+}
+
+<h1 class="text-center head-of-page">עגלת הקניות שלי</h1>
+
+<form asp-action="Search" class="search-form">
+    <input name="query" placeholder="חפש מוצר" />
+    <input type="submit" value="🔍" class="btn" />
+</form>
+
+<table class="table styleTable">
+    <thead>
+        <tr>
+            <th>
+                <h2>מוצר</h2>
+            </th>
+            <th>
+                <h2>מחיר</h2>
+            </th>
+            <th>
+                <h2>כמות</h2>
+            </th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityInCart)
+                </td>
+                <td style="display:flex">
+                    <form class="formStyle" asp-controller="ShoppingCarts" asp-action="EditQuantity" asp-route-id="@item.Id" method="post">
+                        <select class="choiceStyle" name="quantity" id="quantity" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button type="submit" value="AddToCart" class="btn btn-dark">עדכן</button>
+                    </form>
+
+                    <br />
+
+                    <form asp-controller="ShoppingCarts" asp-action="RemoveProduct" asp-route-id="@item.Id" method="post">
+                        <button class="btn btn-danger" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                            </svg>
+                        </button>
+                    </form>
+
+                </td>
+
+            </tr>
+        }
+        @if (ViewBag.cart != null)
+        {
+            <div class="text-danger text-center" style="font-size: xx-large">@ViewBag.cart</div>
+        }
+
+    </tbody>
+    <div>
+    <thead>
+
+        <tr class="total-price">
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </th>
+        </tr>
+    </thead>
+    </div>
+</table>
+
+@if (Model.Products.Count > 0)
+{
+    <button class="btn btn-success" data-toggle="modal" data-target="#pay">שלם</button>
+}
+<a class="btn btn-dark text-center" href="/Products/index">המשך בקניות</a>
+<div class="modal" id="pay" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="container-payment" id="payment">
+        <div class="creditCardInfo">
+            <form>
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="cardholderName">
+                    <label class="text-white">מספר כרטיס</label>
+                    <div class="cardholderName">
+                        <input id="CardNumber" type="number" required min="1000000000000000" max="9999999999999999" />
+                    </div>
+                    <div name="validation"></div>
+                    <div class="cardholderName">
+                        <label class="text-white">שם בעל הכרטיס</label>
+                        <div>
+                            <input id="CardHolder" type="text" required min="1" max="16" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    <div class="exp">
+                        <label class="text-white">תאריך תפוגה</label>
+                        <div id="sami">
+                            <select id="exp">
+                                <option>
+                                    ינואר
+                                </option>
+                                <option>
+                                    פברואר
+                                </option>
+                                <option>
+                                    מרץ
+                                </option>
+                                <option>
+                                    אפריל
+                                </option>
+                                <option>
+                                    מאי
+                                </option>
+                                <option>
+                                    יוני
+                                </option>
+                                <option>
+                                    יולי
+                                </option>
+                                <option>
+                                    אוגוסט
+                                </option>
+                                <option>
+                                    ספטמבר
+                                </option>
+                                <option>
+                                    אוקטובר
+                                </option>
+                                <option>
+                                    נובמבר
+                                </option>
+                                <option>
+                                    דצמבר
+                                </option>
+                            </select>
+                            <select>
+                                <option>
+                                    2022
+                                </option>
+                                <option>
+                                    2023
+                                </option>
+                                <option>
+                                    2024
+                                </option>
+                                <option>
+                                    2025
+                                </option>
+                                <option>
+                                    2026
+                                </option>
+                                <option>
+                                    2027
+                                </option>
+                                <option>
+                                    2028
+                                </option>
+                                <option>
+                                    2029
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cvv">
+                    <label class="text-white">CCV</label>
+                    <div id="sami">
+                        <input id="ccv" type="number" required min="100" max="999" />
+                    </div>
+                </div>
+                <hr />
+                <div class="submitBtn">
+                    <input class="btn btn-success" value="שלם" type="submit" asp-controller="ShoppingCarts" asp-action="AfterPayment" />
+                    <a class="btn btn-dark text-center" href="/ShoppingCarts/MyCart">חזרה לדף הקודם</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

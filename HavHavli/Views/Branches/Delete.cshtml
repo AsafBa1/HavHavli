@@ -1,0 +1,44 @@
+﻿@model havhavli.Models.Branch
+
+@{
+    ViewData["Title"] = "הסרת סניף";
+}
+
+<h1 class="text-center">הסרת סניף</h1>
+
+<h3 class="text-center">האם אתה בטוח שברצונך להסיר סניף זה?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <h4 class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </h4>
+        <h5 class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </h5>
+        <h4 class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </h4>
+        <h5 class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </h5>
+        <h4 class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </h4>
+        <h5 class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </h5>
+        <h4 class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OpeningHours)
+        </h4>
+        <h5 class = "col-sm-10">
+            @Html.DisplayFor(model => model.OpeningHours)
+        </h5>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="🗑️" class="btn btn-danger" /> |
+        <a asp-action="Index">חזור לרשימת סניפים</a>
+    </form>
+</div>

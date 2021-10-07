@@ -1,0 +1,57 @@
+﻿@model IEnumerable<havhavli.Models.category>
+
+@{
+    ViewData["Title"] = "קטגוריות";
+}
+
+<h1 class="text-center head-of-page">קטגוריות</h1>
+
+<p>
+    <a asp-action="Create">צור קטגוריה חדשה</a>
+</p>
+
+
+<form asp-action="Search" class="search-form">
+    <input name="query" id="query" autocomplete="off" placeholder="חיפוש..." />
+    <input type="submit" value="🔍" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">עריכת קטגוריה</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">הסר קטגוריה</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/newsearch.js"></script>
+    <script type="text/html" id="hidden-template">
+        <tr>
+            <td>
+                {name}
+            </td>
+            <td>
+                <a href="/categories/Edit/{id}">עריכת קטגוריה</a> |
+                <a href="/categories/Delete/{id}">הסר קטגוריה</a>
+            </td>
+        </tr>
+    </script>
+}
+        

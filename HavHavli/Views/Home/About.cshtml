@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+@{
+    ViewData["Title"] = "אודות";
+}
+<body>
+    <main>
+        <div class="container-about-main">
+            <div class="text-center head-of-page">
+                <h1>אודות החברה:</h1>
+                <hr class="featurette-divider">
+            </div>
+            <div class="about">
+                רשת הב הב לי הינה רשת חנויות לציוד ומזון לבעלי חיים שקמה בעקבות אהבה לחיות ולאנשים. הרשת מונה 3 סניפים בארץ וצפויה להמשיך ולהתרחב.
+
+                ברשת הב הב לי ניתן למצוא מגוון רחב של מוצרים לחתולים, כלבים, מכרסמים, דגים וציפורים:
+
+            </div>
+
+            <br />
+
+            <div class="about">
+                חתולים – מזון יבש ומשלים, מזון רפואי, צעצועים, קולרים, חומרי הדברה, מוצרים להאכלה, מוצרי היגיינה ועוד!
+
+                כלבים – מזון יבש ומשלים, מזון רפואי, צעצועי לעיסה, צעצועי אילוף, צעצועים לגורים, קולרים וחגורות, רתמות גוף, חומרי הדברה מקצועיים, קערות מזון, פדים לאילוף גורים ועשיית צרכים, מיטות ומזרנים, כלובי נשיאה ועוד!
+
+                דגים, מזון, אביזרים נלווים, פילטרים ואף אקווריומים בהזמנה אישית.
+            </div>
+
+            <br />
+
+            <div class="about">
+                רשת הב הב לי חרטה על דגלה שירות מקצועי, אמין ומהיר. כמו כן, אנו מאמינים בחוויית קניית פרונטלית, ובהתאמת המוצר ללקוח. אנו מאמינים שלמרות שלקניות מקוונות יש מקום נכבד בחיינו, גם השירות האישי והאינטראקציה עם לקוחותינו חשובים לא פחות. מתוך אמונה זו אנו מזמינים אתכם, הלקוחות,
+                ליצור עמנו קשר בכל אחד מאמצעי התקשורת המפורסמים באתר לקבלת ייעוץ והכוונה בבחירת המוצר המתאים ביותר לחיית המחמד שלכם.
+            </div>
+
+            <br />
+
+            <div class="about">
+
+                העובדים שלנו ישמחו לתת לכם שירות מקצועי, אדיב וסבלני. אתם מוזמנים לבקר באחד הסניפים שלנו:
+                <a asp-controller="Branches" asp-action="Index">הסניפים שלנו</a>
+            </div>
+        </div>
+        <section class="container-about-map">
+            <div>
+                <title>loadmapwithoptionsHTML</title>
+                <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+                <style type='text/css'>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                        font-family: 'Segoe UI',Helvetica,Arial,Sans-Serif
+                    }
+                </style>
+            </div>
+            <div>
+                <div id='printoutPanel'></div>
+
+                <div id='myMap' style='width: 30vw; height: 30vh;'></div>
+                <script type='text/javascript'>
+                    function loadMapScenario() {
+                        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                            showSearchBar: true,
+                            center: new Microsoft.Maps.Location(31.990314, 34.774776),
+                            mapTypeId: Microsoft.Maps.MapTypeId.road,
+                            zoom: 15
+                        });
+                        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+                        map.entities.push(pushpin);
+                    }
+                </script>
+                <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AmAaHqIQVXR-3jbhbla3oVe1pS6q5tDVMtnCtTNyzD13C9FXAOCRvGVIay3wXXsu&callback=loadMapScenario' async defer></script>
+            </div>
+        </section>
+    </main>
+</body>

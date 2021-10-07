@@ -1,0 +1,43 @@
+﻿@model havhavli.Models.Supplier
+
+@{
+    ViewData["Title"] = "הוסף ספק";
+}
+
+<h1 class="text-center">הוסף ספק</h1>
+
+<h4>פרטי ספק</h4>
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactName" class="control-label"></label>
+                <input asp-for="ContactName" class="form-control" />
+                <span asp-validation-for="ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="הוסף ספק" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="under-form">
+    <a asp-action="Index">חזור לרשימת ספקים</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,193 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*new font for the website - Font Assistant*/
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+    Border-radius: 4px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+    Border-radius: 4px;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    float: right;
+    text-align: right;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: beige;
+    background-image: none;
+    font-family: 'Assistant';
+    color: #000000;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    float: right;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    /*color: wheat;*/
+}
+
+.container {
+    padding-left: 0;
+    margin-right: unset;
+    max-width:100%;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+.main-vid1 {
+    height: auto;
+}
+.main-vid2 {
+    height: auto;
+    margin-right: 15px;
+}
+.lead {
+    color: rgb(0 0 0 / 90%);
+    font-weight: bold;
+}
+.product_to_delete {
+    background: white;
+    width: fit-content;
+    text-align: center;
+}
+.col-sm-2{
+    font-weight: 900;
+}
+
+.col-md-2 {
+    margin-right: 15px;
+}
+
+.table-striped styleTable {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 800px;
+}
+
+.container-categories {
+    display: flex;
+    justify-content: center;
+}
+
+.container-about-map {
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.total-price {
+    display: flex;
+    font-size: xx-large;
+}
+
+.container-payment {
+    background: steelblue;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-products {
+    padding-top: 15px;
+    margin-right: 35px;
+}
+
+.homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.homeTopVideoWrapper, .video-container-main {
+    width: 100%;
+}
+
+.video-main {
+    width: 100%;
+}
+
+.search-form {
+    margin-bottom: 15px;
+}
+
+.under-form {
+    margin-right: 15px;
+}
+
+.head-of-page {
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.about {
+    margin-right: 10px;
+}

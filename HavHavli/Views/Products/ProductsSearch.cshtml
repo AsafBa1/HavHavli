@@ -1,0 +1,65 @@
+﻿@using  havhavli.Controllers
+@model IEnumerable<ProductJoin>
+
+@{
+    ViewData["Title"] = "מוצרי החנות";
+}
+
+<h1 class="text-center">מוצרי החנות</h1>
+
+<div class="text-center">
+    <form class="formStyle" asp-controller="Products" asp-action="JoinSearch">
+        <label class="text-dark text-center"> חפש מוצר :</label>
+        <input type="text" id="productName" name="productName" required min="1">
+        <label class="text-dark text-center" for="price">טווח מחירים :</label>
+        <select class="choiceStyle" name="price" id="price" required>
+            <option value="50">0-50₪</option>
+            <option value="150">0-150₪</option>
+            <option value="250">0-250₪</option>
+            <option value="400">0-400₪</option>
+            <option value="800">0-800₪</option>
+        </select>
+        <button type="submit" value="Search" class="btn btn-light">🔍</button>
+    </form>
+</div>
+
+<div class="container-products">
+    <div class="row">
+        @foreach (var item in Model as ICollection<ProductJoin>)
+        {
+            <div class="card col-3" style="width:auto; flex: 0 0 15%">
+                <img src="@item.productimage.Imge" class="card-img-top" alt="product image" style="max-width:300px; max-height:300px">
+                <div class="card-body">
+                    <h5 class="card-title">@item.product.Name</h5>
+                    <p class="card-text"> @item.product.Description</p>
+                    <p class="card-text"> @item.product.Price ש"ח</p>
+                    @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
+                    {
+                        <form class="formStyle" asp-controller="ShoppingCarts" asp-action="AddToCart" asp-route-id="@item.product.Id" method="post">
+                            <label class="text-dark text-center" for="quantity">כמות : </label><br />
+                            <select class="choiceStyle" name="quantity" id="quantity" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                            <button type="submit" value="AddToCart" class="btn btn-dark">הוסף לסל הקניות</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-success card-background" asp-area="" asp-controller="Users" asp-action="Login">הוסף לעגלת הקניות</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        alert("המוצר התווסף לסל הקניות!");
+    }
+</script>

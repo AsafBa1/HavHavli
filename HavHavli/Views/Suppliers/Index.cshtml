@@ -1,0 +1,74 @@
+﻿@model IEnumerable<havhavli.Models.Supplier>
+
+@{
+    ViewData["Title"] = "ספקים";
+}
+
+<h1 class="text-center head-of-page">ספקים</h1>
+
+<p>
+    <a asp-action="Create">הוסף ספק</a>
+</p>
+<form asp-action="Search" class="search-form">
+    <input name="query" id="query" autocomplete="off" placeholder="חיפוש..." />
+    <input type="submit" value="🔍" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    <a asp-controller="Products" asp-action="SupplierProducts" asp-route-id="@item.Id">מוצרים</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">ערוך פרטי ספק</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">הסר ספק</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/SupplierSearch.js"></script>
+    <script type="text/html" id="hidden-template">
+        <tr>
+            <td>
+                {name}
+            </td>
+            <td>
+                {contactName}
+            </td>
+            <td>
+                {phone}
+            </td>
+            <td>
+                <a href="/Products/SupplierProducts/{id}">מוצרים</a> |
+                <a href="/Suppliers/Edit/{id}">ערוך פרטי ספק</a> |
+                <a href="/Suppliers/Delete/{id}">הסר ספק</a>
+            </td>
+        </tr>
+    </script>
+}
